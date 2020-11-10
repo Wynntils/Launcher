@@ -54,10 +54,10 @@ You may use this software in your own project so long as the following condition
 Wynntils is allowed to fork this software under the following:
 
 
-[x] Credit is expressly given to the original authors (<a href="https://github.com/dscalzi">Daniel Scalzi</a>).
-[x] Include a link to the original source on the launcher's About page. 
-[x] Credit the authors and provide a link to the original source in any publications or download pages.
-[x] The source code remain **public** as a fork of this repository.
+- [x] Credit is expressly given to the original authors (<a href="https://github.com/dscalzi">Daniel Scalzi</a>).
+- [x] Include a link to the original source on the launcher's About page. 
+- [x] Credit the authors and provide a link to the original source in any publications or download pages.
+- [x] The source code remain **public** as a fork of this repository.
 
 ---
 
