@@ -1,13 +1,13 @@
 {
-  "name": "helioslauncher",
+  "name": "wynntilslauncher",
   "version": "1.8.0",
-  "productName": "Helios Launcher",
+  "productName": "Wynntils Launcher",
   "description": "Modded Minecraft Launcher",
-  "author": "Daniel Scalzi (https://github.com/dscalzi/)",
+  "author": "Scyu_ (https://github.com/DevScyu/)",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/dscalzi/HeliosLauncher",
+  "homepage": "https://github.com/Wynntils/Launcher",
   "bugs": {
-    "url": "https://github.com/dscalzi/HeliosLauncher/issues"
+    "url": "https://github.com/Wynntils/Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -34,6 +34,7 @@
     "fs-extra": "^9.0.1",
     "github-syntax-dark": "^0.5.0",
     "jquery": "^3.5.1",
+    "minecraft-server-status": "^1.0.1",
     "request": "^2.88.2",
     "semver": "^7.3.2",
     "tar-fs": "^2.1.1",
@@ -47,6 +48,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dscalzi/HeliosLauncher.git"
+    "url": "git+https://github.com/Wynntils/Launcher.git"
   }
 }

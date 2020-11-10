@@ -1,4 +1,5 @@
 const net = require('net')
+const status = require('minecraft-server-status')
 
 /**
  * Retrieves the status of a minecraft server.
@@ -16,6 +17,24 @@ exports.getStatus = function(address, port = 25565){
     if(typeof port === 'string'){
         port = parseInt(port)
     }
+
+    return new Promise((resolve, reject) => {
+        status(address, port, response => {
+            if(response.status == "success"){
+                resolve({
+                    online: response.online,
+                    version: response.server.protocol,
+                    motd: response.motd.replace(/\u0000/g, ''),
+                    onlinePlayers: response.players.now,
+                    maxPlayers: response.players.max
+                })
+            }else{
+                resolve({
+                    online: response.online
+                })
+            }
+        });
+    })
 
     return new Promise((resolve, reject) => {
         const socket = net.connect(port, address, () => {
