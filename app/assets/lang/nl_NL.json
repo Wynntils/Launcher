@@ -1,0 +1,49 @@
+{
+    "html": {
+        "avatarOverlay": "Bewerken"
+    },
+    "js": {
+        "login": {
+            "error": {
+                "invalidValue": "* Ongeldige waarde",
+                "requiredValue": "* Verplicht",
+                "userMigrated": {
+                    "title": "Fout tijdens het inloggen:<br>Ongeldige credentials",
+                    "desc": "Je hebt geprobeerd in te loggen met een gemigreerde account. Probeer het opnieuw met de e-mail van de account als gebruikersnaam."
+                },
+                "invalidCredentials": {
+                    "title": "Fout tijdens het inloggen:<br>Ongeldige credentials",
+                    "desc": "De e-mail of het wachtwoord dat u hebt ingevoerd is onjuist. Probeer het nog eens."
+                },
+                "rateLimit": {
+                    "title": "Fout tijdens het inloggen:<br>Teveel pogingen",
+                    "desc": "Er zijn de laatste tijd te veel aanmeldingspogingen geweest met dit account. Probeer het later nog eens."
+                },
+                "noInternet": {
+                    "title": "Fout tijdens het inloggen:<br>Geen internetconnectie",
+                    "desc": "U moet verbonden zijn met het internet om in te kunnen loggen. Maak verbinding en probeer het opnieuw."
+                },
+                "authDown": {
+                    "title": "Fout tijdens het inloggen:<br>Authenticatieserver Offline",
+                    "desc": "De authenticatieserver van Mojang is momenteel offline of onbereikbaar. Wacht even en probeer het opnieuw. U kunt de status van de server controleren op <a href=\"https://help.mojang.com/\">Mojang's help portaal</a>."
+                },
+                "notPaid": {
+                    "title": "Fout tijdens het inloggen: <br>Game niet gekocht",
+                    "desc": "Het account waarmee u probeert in te loggen heeft geen exemplaar van Minecraft.<br>U kan een exemplaar kopen op <a href=\"https://minecraft.net/\">Minecraft.net</a>."
+                },
+                "unknown": {
+                    "title": "Fout tijdens het inloggen: <br>Onbekende fout"
+                }
+            },
+            "login": "LOG IN",
+            "loggingIn": "INLOGGEN",
+            "success": "INGELOGD",
+            "tryAgain": "Probeer opnieuw"
+        },
+        "landing": {
+            "launch": {
+                "pleaseWait": "Even geduld..."
+            }
+        }
+    }
+}
