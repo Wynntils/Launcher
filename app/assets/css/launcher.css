@@ -522,6 +522,7 @@ body, button {
     top: 7px;
     opacity: 0;
     transition: 0.25s ease;
+    pointer-events: none;
 }
 
 .shake {
