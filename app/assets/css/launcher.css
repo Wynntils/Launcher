@@ -3206,13 +3206,14 @@ input:checked + .toggleSwitchSlider:before {
     padding: 0px;
     transition: 0.25s ease;
     outline: none;
+    color: #86C232;
 }
 #launch_button:hover,
 #launch_button:focus {
     text-shadow: 0px 0px 20px #fff, 0px 0px 20px #fff;
 }
 #launch_button:active {
-    color: #c7c7c7;
+    color: #86C232;
     text-shadow: 0px 0px 20px #c7c7c7, 0px 0px 20px #c7c7c7;
 }
 #launch_button:disabled {
