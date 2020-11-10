@@ -1,5 +1,6 @@
-<p align="center"><img src="./app/assets/images/SealCircle.png" width="150px" height="150px" alt="aventium softworks"></p>
-
+<p align="center">
+<img src="http://cdn.wynntils.com/wynntils%20logo%20-%20w%20paintstroke.png" width=30%>
+</p>
 <h1 align="center">Wynntils Launcher</h1>
 
 <em><h5 align="center">(forked from <a href="https://github.com/dscalzi">dscalzi</a>'s <a href="https://github.com/dscalzi/HeliosLauncher">HeliosLauncher</a>)</h5></em>
