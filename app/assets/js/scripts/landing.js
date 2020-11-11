@@ -296,7 +296,7 @@ let extractListener
  */
 function asyncSystemScan(mcVersion, launchAfter = true){
 
-    setLaunchDetails('Please wait..')
+    setLaunchDetails(Lang.queryJS('landing.launch.pleaseWait'))
     toggleLaunchArea(true)
     setLaunchPercentage(0, 100)
 
@@ -498,7 +498,7 @@ function dlAsync(login = true){
         }
     }
 
-    setLaunchDetails('Please wait..')
+    setLaunchDetails(Lang.queryJS('landing.launch.pleaseWait'))
     toggleLaunchArea(true)
     setLaunchPercentage(0, 100)
 
@@ -546,27 +546,27 @@ function dlAsync(login = true){
                 case 'distribution':
                     setLaunchPercentage(20, 100)
                     loggerLaunchSuite.log('Validated distibution index.')
-                    setLaunchDetails('Loading version information..')
+                    setLaunchDetails(Lang.queryJS('landing.launch.loadingVersionDetails'))
                     break
                 case 'version':
                     setLaunchPercentage(40, 100)
                     loggerLaunchSuite.log('Version data loaded.')
-                    setLaunchDetails('Validating asset integrity..')
+                    setLaunchDetails(Lang.queryJS('landing.launch.validatingAssetIntegrity'))
                     break
                 case 'assets':
                     setLaunchPercentage(60, 100)
                     loggerLaunchSuite.log('Asset Validation Complete')
-                    setLaunchDetails('Validating library integrity..')
+                    setLaunchDetails(Lang.queryJS('landing.launch.validatingLibraryIntegrity'))
                     break
                 case 'libraries':
                     setLaunchPercentage(80, 100)
                     loggerLaunchSuite.log('Library validation complete.')
-                    setLaunchDetails('Validating miscellaneous file integrity..')
+                    setLaunchDetails(Lang.queryJS('landing.launch.validatingMiscIntegrity'))
                     break
                 case 'files':
                     setLaunchPercentage(100, 100)
                     loggerLaunchSuite.log('File validation complete.')
-                    setLaunchDetails('Downloading files..')
+                    setLaunchDetails(Lang.queryJS('landing.launch.downloadingFiles'))
                     break
             }
         } else if(m.context === 'progress'){
@@ -692,7 +692,7 @@ function dlAsync(login = true){
                     if(SERVER_JOINED_REGEX.test(data)){
                         DiscordWrapper.updateDetails('Exploring the Realm!')
                     } else if(GAME_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Sailing to Westeros!')
+                        DiscordWrapper.updateDetails('Flying to Wynncraft!')
                     }
                 }
 
@@ -712,7 +712,7 @@ function dlAsync(login = true){
                     proc.stdout.on('data', tempListener)
                     proc.stderr.on('data', gameErrorListener)
 
-                    setLaunchDetails('Done. Enjoy the server!')
+                    setLaunchDetails(Lang.queryJS('landing.launch.done'))
 
                     // Init Discord Hook
                     const distro = DistroManager.getDistribution()
@@ -744,7 +744,7 @@ function dlAsync(login = true){
     // Begin Validations
 
     // Validate Forge files.
-    setLaunchDetails('Loading server information..')
+    setLaunchDetails(Lang.queryJS('landing.launch.loadingServerInformation'))
 
     refreshDistributionIndex(true, (data) => {
         onDistroRefresh(data)
@@ -770,6 +770,29 @@ function dlAsync(login = true){
         })
     })
 }
+
+/**
+ * Changelog loading functions
+ */
+
+ // DOM
+const changelogContent = document.getElementById('wynntilsChangelogContent')
+
+// Fetch changelog
+let xhr = new XMLHttpRequest();
+xhr.open('get', 'https://api.wynntils.com/changelog');
+xhr.send();
+
+xhr.onload = function () {
+
+    let response =  JSON.parse(xhr.response);
+    Object.entries(response).forEach(entry => {
+        const [key, value] = entry;
+        console.log(key, value)
+    })
+
+}
+
 
 /**
  * News Loading Functions

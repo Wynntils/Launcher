@@ -2282,6 +2282,45 @@ input:checked + .toggleSwitchSlider:before {
     height: 100%;
 }
 
+#wynntilsChangelog {
+     margin-top: 7%;
+     margin-left: 10%;
+}
+
+#wynntilsChangelogHeader {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#wynntilsChangelogContent {
+    overflow-y: scroll;
+    height: 70%;
+}
+
+#wynntilsChangelogContent::-webkit-scrollbar {
+    width: 5px;
+}
+#wynntilsChangelogContent::-webkit-scrollbar-track{
+    background: transparent;
+}
+#wynntilsChangelogContent::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 15px;
+}
+#wynntilsChangelogContent::-webkit-scrollbar-thumb:hover {
+    background: #727272;
+}
+
+
+.wynntilsChangelogHeaderText {
+     font-size: 20px;
+     font-family: 'Avenir Medium';
+}
+.wynntilsChangelogDesc {
+    font-size: 12px;
+}
+
 /* Lower content container. */
 #landingContainer > #lower {
     height: 23%;

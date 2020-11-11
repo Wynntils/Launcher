@@ -42,7 +42,14 @@
         },
         "landing": {
             "launch": {
-                "pleaseWait": "Please wait.."
+                "pleaseWait": "Please wait..",
+                "loadingServerInformation": "Loading server information...",
+                "loadingVersionDetails": "Loading version information...",
+                "validatingAssetIntegrity": "Validating asset integrity...",
+                "validatingLibraryIntegrity": "Validating library integrity...",
+                "validatingMiscIntegrity": "Validating miscellaneous file integrity...",
+                "downloadingFiles": "Downloading files...",
+                "done": "'Done, Enjoy the server!'"
             }
         }
     }

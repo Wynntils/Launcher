@@ -42,7 +42,14 @@
         },
         "landing": {
             "launch": {
-                "pleaseWait": "Even geduld..."
+                "pleaseWait": "Even geduld...",
+                "loadingServerInformation": "Het laden van de server informatie...",
+                "loadingVersionDetails": "Het laden van de versie informatie...",
+                "validatingAssetIntegrity": "Het valideren van de integriteit van de assets...",
+                "validatingLibraryIntegrity": "Het valideren van de integriteit van de library...",
+                "validatingMiscIntegrity": "Het valideren van diverse bestandsintegriteit...",
+                "downloadingFiles": "Het downloaden van de bestanden...",
+                "done": "Klaar, geniet van de server!"
             }
         }
     }
