@@ -821,7 +821,7 @@ function updateChangelog() {
         });
     }else{
         $(".wynntilsChangelogDescText").text("Latest development builds.")
-        request.get({ url: 'https://ci.wynntils.com/job/Wynntils-DEV/api/json?pretty=true&tree=builds[number,changeSet[items[comment,author[fullName]]]]', json: true }, function (error, response, body) {
+        request.get({ url: 'https://ci.wynntils.com/job/Wynntils-DEV/api/json?pretty=true&tree=builds[number,changeSet[items[comment]],culprits[fullName]]', json: true }, function (error, response, body) {
             if(error) {
                 loggerLanding.error(error);
                 return;
@@ -831,8 +831,13 @@ function updateChangelog() {
                 let version = entry.number;
                 let versionContainer = $(`<div class="changelog_${version}" style="margin-top: 10px;"></div>`)
                 $(versionContainer).append(`<span class="wynntilsChangelogHeaderText">B#${version}</span><br>`)
+                entry.culprits.forEach(author => {
+                    if(author.fullName == 'noreply') return;
+                    console.log(author.fullName);
+                    // Add badge
+                })
                 entry.changeSet.items.forEach(line => {
-                    $(versionContainer).append(`<span class="wynntilsChangelogDesc">${line.comment.replace(/\n/g, "<br>")}<br> - ${line.author.fullName}</span><br>`)
+                    $(versionContainer).append(`<span class="wynntilsChangelogDesc">${line.comment.replace(/\n/g, "<br>")}<br></span><br>`)
                 })
                 $("#wynntilsChangelogContent").append(versionContainer)
             })
