@@ -85,27 +85,31 @@ function setLaunchEnabled(val){
 
 // Bind launch button
 document.getElementById('launch_button').addEventListener('click', function(e){
-    loggerLanding.log('Launching game..')
-    const mcVersion = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()).getMinecraftVersion()
-    const jExe = ConfigManager.getJavaExecutable()
-    if(jExe == null){
-        asyncSystemScan(mcVersion)
-    } else {
-
-        setLaunchDetails(Lang.queryJS('landing.launch.pleaseWait'))
-        toggleLaunchArea(true)
-        setLaunchPercentage(0, 100)
-
-        const jg = new JavaGuard(mcVersion)
-        jg._validateJavaBinary(jExe).then((v) => {
-            loggerLanding.log('Java version meta', v)
-            if(v.valid){
-                dlAsync()
-            } else {
+    validateSelectedAccount().then(function(valid){
+        if(valid === true){
+            loggerLanding.log('Launching game..')
+            const mcVersion = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()).getMinecraftVersion()
+            const jExe = ConfigManager.getJavaExecutable()
+            if(jExe == null){
                 asyncSystemScan(mcVersion)
+            } else {
+
+                setLaunchDetails(Lang.queryJS('landing.launch.pleaseWait'))
+                toggleLaunchArea(true)
+                setLaunchPercentage(0, 100)
+
+                const jg = new JavaGuard(mcVersion)
+                jg._validateJavaBinary(jExe).then((v) => {
+                    loggerLanding.log('Java version meta', v)
+                    if(v.valid){
+                        dlAsync()
+                    } else {
+                        asyncSystemScan(mcVersion)
+                    }
+                })
             }
-        })
-    }
+        }
+    })
 })
 
 // Bind settings button
