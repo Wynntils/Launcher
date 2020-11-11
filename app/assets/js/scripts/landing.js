@@ -778,7 +778,8 @@ function dlAsync(login = true){
  * Changelog loading functions
  */
 
- // DOM
+function updateChangelog() {
+// DOM
 const changelogContent = document.getElementById('wynntilsChangelogContent')
 
 function reverseObject(object) {
@@ -798,37 +799,19 @@ function reverseObject(object) {
 }
 
 // Fetch changelog
-request.get({url: 'https://api.wynntils.com/changelog', json: true}, function(error, response, body){
+request.get({ url: 'https://api.wynntils.com/changelog', json: true }, function (error, response, body) {
     let changelog = reverseObject(body);
     Object.entries(changelog).forEach(entry => {
         const [version, text] = entry
-
-        // console.log(version, text)
-
-        // print version heading
-
+        let versionContainer = $(`<div class="changelog_${version}" style="margin-top: 10px;"></div>`)
+        $(versionContainer).append(`<span class="wynntilsChangelogHeaderText">${version}</span><br>`)
         text.forEach(line => {
-            // print line
+            $(versionContainer).append(`<span class="wynntilsChangelogDesc">${line.replace("%user%", ConfigManager.getSelectedAccount().displayName)}</span><br>`)
         })
-
+        $(changelogContent).append(versionContainer)
     })
-})
-
-
-// let xhr = new XMLHttpRequest();
-// xhr.open('get', 'https://api.wynntils.com/changelog');
-// xhr.send();
-
-// xhr.onload = function () {
-
-//     let response =  JSON.parse(xhr.response);
-//     Object.entries(response).forEach(entry => {
-//         const [key, value] = entry;
-//         console.log(key, value)
-//     })
-
-// }
-
+});
+}
 
 /**
  * News Loading Functions
