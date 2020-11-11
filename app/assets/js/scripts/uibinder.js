@@ -77,6 +77,11 @@ function showMainUI(data){
         if(!isDev && isLoggedIn){
             validateSelectedAccount()
         }
+        
+        // If we're still logged in, connect to athena
+        if(Object.keys(ConfigManager.getAuthAccounts()).length > 0){
+            Athena.login()
+        }
 
         if(ConfigManager.isFirstLaunch()){
             currentView = VIEWS.welcome

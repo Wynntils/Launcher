@@ -4,9 +4,12 @@
 // Requirements
 const cp                      = require('child_process')
 const crypto                  = require('crypto')
+const request                 = require('request')
 const {URL}                   = require('url')
 
+
 // Internal Requirements
+const Athena                  = require('./assets/js/athena')
 const DiscordWrapper          = require('./assets/js/discordwrapper')
 const Mojang                  = require('./assets/js/mojang')
 const ProcessBuilder          = require('./assets/js/processbuilder')
@@ -778,20 +781,53 @@ function dlAsync(login = true){
  // DOM
 const changelogContent = document.getElementById('wynntilsChangelogContent')
 
-// Fetch changelog
-let xhr = new XMLHttpRequest();
-xhr.open('get', 'https://api.wynntils.com/changelog');
-xhr.send();
+function reverseObject(object) {
+    var newObject = {};
+    var keys = [];
 
-xhr.onload = function () {
+    for (var key in object) {
+        keys.push(key);
+    }
 
-    let response =  JSON.parse(xhr.response);
-    Object.entries(response).forEach(entry => {
-        const [key, value] = entry;
-        console.log(key, value)
-    })
+    for (var i = keys.length - 1; i >= 0; i--) {
+      var value = object[keys[i]];
+      newObject[keys[i]]= value;
+    }       
 
+    return newObject;
 }
+
+// Fetch changelog
+request.get({url: 'https://api.wynntils.com/changelog', json: true}, function(error, response, body){
+    let changelog = reverseObject(body);
+    Object.entries(changelog).forEach(entry => {
+        const [version, text] = entry
+
+        // console.log(version, text)
+
+        // print version heading
+
+        text.forEach(line => {
+            // print line
+        })
+
+    })
+})
+
+
+// let xhr = new XMLHttpRequest();
+// xhr.open('get', 'https://api.wynntils.com/changelog');
+// xhr.send();
+
+// xhr.onload = function () {
+
+//     let response =  JSON.parse(xhr.response);
+//     Object.entries(response).forEach(entry => {
+//         const [key, value] = entry;
+//         console.log(key, value)
+//     })
+
+// }
 
 
 /**
