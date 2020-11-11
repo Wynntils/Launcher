@@ -84,6 +84,33 @@ class ProcessBuilder {
         })
         child.on('close', (code, signal) => {
             logger.log('Exited with code', code)
+            if(code == 4294967295){
+                logger.log('Minecraft crashed!')
+
+                // Read crash report from latest.log
+
+                fs.readFile(path.join(this.gameDir, 'logs', 'latest.log'), "utf8", (err, data) => {
+                    if (err) throw err;
+                    // var crashLog = [...data.matchAll(/(---- Minecraft Crash Report ----(?:.|\n)*)\[\d{2}:\d{2}:\d{2}\].*Game crashed! (.*)/gm)][0];
+
+                    // bring window to front and show display
+                    setTimeout(() => {
+                        const window = remote.getCurrentWindow()
+                        window.focus()
+                        $('#loadingContainer').fadeOut(250, () => {
+                            document.getElementById('overlayContainer').style.background = 'none'
+                            setOverlayContent(
+                                'Minecraft has crashed', '',
+                                'Dismiss'
+                            )
+                            setOverlayHandler(() => {
+                                toggleOverlay(false)
+                            })
+                            toggleOverlay(true)
+                        })
+                    }, 750)
+                });
+            }
             fs.remove(tempNativePath, (err) => {
                 if(err){
                     logger.warn('Error while deleting temp dir', err)
