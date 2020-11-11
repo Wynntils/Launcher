@@ -3,7 +3,6 @@
  */
 // Requirements
 const cp                      = require('child_process')
-const { Console } = require('console')
 const crypto                  = require('crypto')
 const request                 = require('request')
 const {URL}                   = require('url')
@@ -827,14 +826,15 @@ function updateChangelog() {
                 loggerLanding.error(error);
                 return;
             }
-            console.log(body);
             body.builds.forEach(entry => {
                 let version = entry.number;
                 let versionContainer = $(`<div class="changelog_${version}" style="margin-top: 10px;"></div>`)
-                $(versionContainer).append(`<span id="version_${version}" class="wynntilsChangelogHeaderText">B#${version}</span><br>`)
+                let header = $(`<span id="version_${version}" class="wynntilsChangelogHeaderText">B#${version}</span>`);
+                $(versionContainer).append(header)
+                $(versionContainer).append(`<br>`)
                 
-               entry.culprits.forEach(author => {
-                    $(`#version_${version}`).append(`<span class="authorBadge">${author.fullName}</span>`);
+                entry.culprits.forEach(author => {
+                    $(header).append(`<span class="authorBadge">${author.fullName}</span>`);
                 })
                 
                 entry.changeSet.items.forEach(line => {

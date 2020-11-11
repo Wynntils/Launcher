@@ -25,8 +25,10 @@
     "node": "12.x.x"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "adm-zip": "^0.4.16",
     "async": "^3.2.0",
+    "bootstrap": "^4.5.3",
     "constants": "^0.0.2",
     "discord-rpc": "^3.1.4",
     "ejs": "^3.1.5",
