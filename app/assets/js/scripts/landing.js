@@ -141,6 +141,7 @@ function updateSelectedAccount(authUser){
         }
     }
     user_text.innerHTML = username
+    updateChangelog()
 }
 updateSelectedAccount(ConfigManager.getSelectedAccount())
 
@@ -156,6 +157,7 @@ function updateSelectedServer(serv){
         animateModsTabRefresh()
     }
     setLaunchEnabled(serv != null)
+    updateChangelog()
 }
 // Real text is set in uibinder.js on distributionIndexDone.
 server_selection_button.innerHTML = '\u2022 Loading..'
@@ -779,38 +781,63 @@ function dlAsync(login = true){
  */
 
 function updateChangelog() {
-// DOM
-const changelogContent = document.getElementById('wynntilsChangelogContent')
+    // DOM
+    const changelogContent = document.getElementById('wynntilsChangelogContent')
+    function reverseObject(object) {
+        var newObject = {};
+        var keys = [];
 
-function reverseObject(object) {
-    var newObject = {};
-    var keys = [];
+        for (var key in object) {
+            keys.push(key);
+        }
 
-    for (var key in object) {
-        keys.push(key);
+        for (var i = keys.length - 1; i >= 0; i--) {
+          var value = object[keys[i]];
+          newObject[keys[i]]= value;
+        }       
+
+        return newObject;
     }
 
-    for (var i = keys.length - 1; i >= 0; i--) {
-      var value = object[keys[i]];
-      newObject[keys[i]]= value;
-    }       
-
-    return newObject;
-}
-
-// Fetch changelog
-request.get({ url: 'https://api.wynntils.com/changelog', json: true }, function (error, response, body) {
-    let changelog = reverseObject(body);
-    Object.entries(changelog).forEach(entry => {
-        const [version, text] = entry
-        let versionContainer = $(`<div class="changelog_${version}" style="margin-top: 10px;"></div>`)
-        $(versionContainer).append(`<span class="wynntilsChangelogHeaderText">${version}</span><br>`)
-        text.forEach(line => {
-            $(versionContainer).append(`<span class="wynntilsChangelogDesc">${line.replace("%user%", ConfigManager.getSelectedAccount().displayName)}</span><br>`)
-        })
-        $(changelogContent).append(versionContainer)
-    })
-});
+    // Fetch changelog for stable
+    $("#wynntilsChangelogContent").empty()
+    if(ConfigManager.getSelectedServer() == "Wynntils"){
+        $(".wynntilsChangelogDescText").text("Latest stable changelogs.")
+        request.get({ url: 'https://api.wynntils.com/changelog', json: true }, function (error, response, body) {
+            if(error) {
+                loggerLanding.error(error);
+                return;
+            }
+            let changelog = reverseObject(body);
+            Object.entries(changelog).forEach(entry => {
+                const [version, text] = entry
+                let versionContainer = $(`<div class="changelog_${version}" style="margin-top: 10px;"></div>`)
+                $(versionContainer).append(`<span class="wynntilsChangelogHeaderText">${version}</span><br>`)
+                text.forEach(line => {
+                    $(versionContainer).append(`<span class="wynntilsChangelogDesc">${line.replace("%user%", ConfigManager.getSelectedAccount().displayName)}</span><br>`)
+                })
+                $("#wynntilsChangelogContent").append(versionContainer)
+            })
+        });
+    }else{
+        $(".wynntilsChangelogDescText").text("Latest development builds.")
+        request.get({ url: 'https://ci.wynntils.com/job/Wynntils-DEV/api/json?pretty=true&tree=builds[number,changeSet[items[comment,author[fullName]]]]', json: true }, function (error, response, body) {
+            if(error) {
+                loggerLanding.error(error);
+                return;
+            }
+            console.log(body);
+            body.builds.forEach(entry => {
+                let version = entry.number;
+                let versionContainer = $(`<div class="changelog_${version}" style="margin-top: 10px;"></div>`)
+                $(versionContainer).append(`<span class="wynntilsChangelogHeaderText">B#${version}</span><br>`)
+                entry.changeSet.items.forEach(line => {
+                    $(versionContainer).append(`<span class="wynntilsChangelogDesc">${line.comment.replace(/\n/g, "<br>")}<br> - ${line.author.fullName}</span><br>`)
+                })
+                $("#wynntilsChangelogContent").append(versionContainer)
+            })
+        });
+    }
 }
 
 /**
