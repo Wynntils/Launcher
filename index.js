@@ -123,7 +123,7 @@ function createWindow() {
 
     win.removeMenu()
 
-    win.resizable = true
+    win.resizable = false;
 
     win.on('closed', () => {
         win = null

@@ -137,7 +137,7 @@ function updateSelectedAccount(authUser){
             username = authUser.displayName
         }
         if(authUser.uuid != null){
-            document.getElementById('avatarContainer').style.backgroundImage = `url('https://crafatar.com/avatars/${authUser.uuid}?overlay')`
+            document.getElementById('avatarContainer').style.backgroundImage = `url('https://crafatar.com/avatars/${authUser.uuid}')`
         }
     }
     user_text.innerHTML = username
@@ -834,7 +834,7 @@ function updateChangelog() {
                 $(versionContainer).append(`<br>`)
                 
                 entry.culprits.forEach(author => {
-                    $(header).append(`<span class="authorBadge">${author.fullName}</span>`);
+                    $(header).append(`<span class="authorBadge"><i class="fab fa-github"></i> ${author.fullName}</span>`);
                 })
                 
                 entry.changeSet.items.forEach(line => {
