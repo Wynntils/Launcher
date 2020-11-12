@@ -211,7 +211,7 @@ function saveSettingsValues(){
     })
 }
 
-let selectedSettingsTab = 'settingsTabAccount'
+let selectedSettingsTab = 'settingsTabWynntilsAccount'
 
 /**
  * Modify the settings container UI when the scroll threshold reaches

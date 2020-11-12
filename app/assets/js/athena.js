@@ -133,7 +133,7 @@ function printCoolLogo(){
 [          ;0K;'0MMMMMMMMMMMMMXc         ]
 [           .ll.'xXMMMMMMMMMNx,          ]
 [             ..  .:dxkOOkdc'            ]
-[             Wynntils Athena            ]
+%c[             Wynntils Athena            ]
 [                  v2.0.0                ]
-[========================================]`, 'color: #ff0000; font-weight: bold')
+[========================================]`, 'color: #ff0000; font-weight: bold', 'color: yellow; font-weight: bold')
 }
