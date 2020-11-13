@@ -35,13 +35,13 @@ const loggerAthena = LoggerUtil('%c[Athena]', 'color: #ff0000; font-weight: bold
 let authToken = null;
 
 // exports.getAuthToken = () => {return authToken}
-function dashUUID(i) { return i.substr(0,8)+"-"+i.substr(8,4)+"-"+i.substr(12,4)+"-"+i.substr(16,4)+"-"+i.substr(20); }
+exports.dashUUID = (i) => { return (i.substr(8,1) == '-') ? i : i.substr(0,8)+"-"+i.substr(8,4)+"-"+i.substr(12,4)+"-"+i.substr(16,4)+"-"+i.substr(20); }
 
-exports.getInfo = async () => {
+exports.getInfo = async (uuid) => {
     return new Promise(resolve => {
         request.post('https://athena.wynntils.com/user/getInfo', {
             json: {
-                uuid: dashUUID(ConfigManager.getSelectedAccount().uuid)
+                uuid: exports.dashUUID(uuid)
             }
         }, function(error, response, body){
             resolve(body)

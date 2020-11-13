@@ -15,6 +15,8 @@ const Mojang                  = require('./assets/js/mojang')
 const ProcessBuilder          = require('./assets/js/processbuilder')
 const ServerStatus            = require('./assets/js/serverstatus')
 
+const WynntilsModel           = require('./assets/js/wynntils-model')
+
 // Launch Elements
 const launch_content          = document.getElementById('launch_content')
 const launch_details          = document.getElementById('launch_details')
@@ -138,6 +140,7 @@ function updateSelectedAccount(authUser){
         }
         if(authUser.uuid != null){
             document.getElementById('avatarContainer').style.backgroundImage = `url('https://crafatar.com/avatars/${authUser.uuid}')`
+            WynntilsModel.showUUID(Athena.dashUUID(authUser.uuid))
         }
     }
     user_text.innerHTML = username
