@@ -1,9 +1,14 @@
 <div id="landingContainer" style="display: none;">
     <div id="upper">
         <div id="left">
-            <div id="image_wynntils_container">
-                <img id="image_wynntils" src="assets/images/WynntilsLogo.png"/>
-                <div id="updateAvailableTooltip">Update Available</div>
+            <div id="leftContainer">
+                <div id="image_wynntils_container">
+                    <img id="image_wynntils" src="assets/images/WynntilsLogo.png"/>
+                    <div id="updateAvailableTooltip">Update Available</div>
+                </div>
+                <div style="display:flex; flex-direction: column; justify-content: center; margin-top: 20px">
+
+                </div>
             </div>
         </div>
         <div  id="content">
@@ -80,18 +85,53 @@
                         <span id="player_count">OFFLINE</span>
                     </div>
                     <div class="bot_divider"></div>
-                    <div id="mojangStatusWrapper">
-                        <span class="bot_label">MOJANG STATUS</span>
-                        <span id="mojang_status_icon">&#8226;</span>
-                        <div id="mojangStatusTooltip">
-                            <div id="mojangStatusTooltipTitle">Services</div>
+                    <div id="externalStatusWrapper">
+                        <span class="bot_label">EXTERNAL STATUSES</span>
+                        <span id="external_status_icon">&#8226;</span>
+                        <div id="externalStatusTooltip">
+                            <div id="externalStatusNEContainer">
+                                <div class="externalStatusNEBar"></div>
+                                <div id="externalStatusNETitle">Wynntils&nbsp;Services</div>
+                                <div class="externalStatusNEBar"></div>
+                            </div>
+                            <div id="wynntilsStatusContainer">
+                                <div class="externalStatusContainer">
+                                    <span class="externalStatusIcon" style="color: #a5c325;">•</span>
+                                    <span class="externalStatusName">Athena Service</span>
+                                </div>
+                                <div class="externalStatusContainer">
+                                    <span class="externalStatusIcon" style="color: #a5c325;">•</span>
+                                    <span class="externalStatusName">Website</span>
+                                </div>
+                                <!-- Essential Wynntils services are populated here. -->
+                            </div>
+                            <!-- <div id="externalStatusNEContainer">
+                                <div class="externalStatusNEBar"></div>
+                                <div id="externalStatusNETitle">Wynncraft&nbsp;Services</div>
+                                <div class="externalStatusNEBar"></div>
+                            </div>
+                            <div id="wynncraftStatusContainer">
+                                <div class="externalStatusContainer">
+                                    <span class="externalStatusIcon" style="color: #a5c325;">•</span>
+                                    <span class="externalStatusName">API Service</span>
+                                </div>
+                                <div class="externalStatusContainer">
+                                    <span class="externalStatusIcon" style="color: #a5c325;">•</span>
+                                    <span class="externalStatusName">Server</span>
+                                </div>
+                            </div> -->
+                            <div id="externalStatusNEContainer">
+                                <div class="externalStatusNEBar"></div>
+                                <div id="externalStatusNETitle">Mojang&nbsp;Services</div>
+                                <div class="externalStatusNEBar"></div>
+                            </div>
                             <div id="mojangStatusEssentialContainer">
                                 <!-- Essential Mojang services are populated here. -->
                             </div>
-                            <div id="mojangStatusNEContainer">
-                                <div class="mojangStatusNEBar"></div>
-                                <div id="mojangStatusNETitle">Non&nbsp;Essential</div>
-                                <div class="mojangStatusNEBar"></div>
+                            <div id="externalStatusNEContainer">
+                                <div class="externalStatusNEBar"></div>
+                                <div id="externalStatusNETitle">Non&nbsp;Essential</div>
+                                <div class="externalStatusNEBar"></div>
                             </div>
                             <div id="mojangStatusNonEssentialContainer">
                                 <!-- Non Essential Mojang services are populated here. -->

@@ -167,9 +167,8 @@ server_selection_button.onclick = (e) => {
 }
 
 // Update Mojang Status Color
-const refreshMojangStatuses = async function(){
+const refreshExternalStatuses = async function(){
     loggerLanding.log('Refreshing Mojang Statuses..')
-
     let status = 'grey'
     let tooltipEssentialHTML = ''
     let tooltipNonEssentialHTML = ''
@@ -180,22 +179,24 @@ const refreshMojangStatuses = async function(){
         greyCount = 0
 
         for(let i=0; i<statuses.length; i++){
+            let brokenService = false;
             const service = statuses[i]
 
             // Mojang API is broken for these two. https://bugs.mojang.com/browse/WEB-2303
             if(service.service === 'sessionserver.mojang.com' || service.service === 'minecraft.net') {
+                brokenService = true
                 service.status = 'green'
             }
 
-            if(service.essential){
-                tooltipEssentialHTML += `<div class="mojangStatusContainer">
-                    <span class="mojangStatusIcon" style="color: ${Mojang.statusToHex(service.status)};">&#8226;</span>
-                    <span class="mojangStatusName">${service.name}</span>
+            if(service.essential && !brokenService){
+                tooltipEssentialHTML += `<div class="externalStatusContainer">
+                    <span class="externalStatusIcon" style="color: ${Mojang.statusToHex(service.status)};">&#8226;</span>
+                    <span class="externalStatusName">${service.name}</span>
                 </div>`
-            } else {
-                tooltipNonEssentialHTML += `<div class="mojangStatusContainer">
-                    <span class="mojangStatusIcon" style="color: ${Mojang.statusToHex(service.status)};">&#8226;</span>
-                    <span class="mojangStatusName">${service.name}</span>
+            } else if(!brokenService) {
+                tooltipNonEssentialHTML += `<div class="externalStatusContainer">
+                    <span class="externalStatusIcon" style="color: ${Mojang.statusToHex(service.status)};">&#8226;</span>
+                    <span class="externalStatusName">${service.name}</span>
                 </div>`
             }
 
@@ -227,7 +228,7 @@ const refreshMojangStatuses = async function(){
     
     document.getElementById('mojangStatusEssentialContainer').innerHTML = tooltipEssentialHTML
     document.getElementById('mojangStatusNonEssentialContainer').innerHTML = tooltipNonEssentialHTML
-    document.getElementById('mojang_status_icon').style.color = Mojang.statusToHex(status)
+    document.getElementById('external_status_icon').style.color = Mojang.statusToHex(status)
 }
 
 const refreshServerStatus = async function(fade = false){
@@ -262,11 +263,11 @@ const refreshServerStatus = async function(fade = false){
     
 }
 
-refreshMojangStatuses()
+refreshExternalStatuses()
 // Server Status is refreshed in uibinder.js on distributionIndexDone.
 
 // Set refresh rate to once every 5 minutes.
-let mojangStatusListener = setInterval(() => refreshMojangStatuses(true), 300000)
+let externalStatusListener = setInterval(() => refreshExternalStatuses(true), 300000)
 let serverStatusListener = setInterval(() => refreshServerStatus(true), 300000)
 
 /**
@@ -885,7 +886,7 @@ function slide_(up){
         lCLLeft.style.top = '-200vh'
         lCLCenter.style.top = '-200vh'
         lCLRight.style.top = '-200vh'
-        newsBtn.style.top = '130vh'
+        newsBtn.style.top = '122vh'
         newsContainer.style.top = '0px'
         //date.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
         //landingContainer.style.background = 'rgba(29, 29, 29, 0.55)'
@@ -909,7 +910,7 @@ function slide_(up){
         lCLLeft.style.top = '0px'
         lCLCenter.style.top = '0px'
         lCLRight.style.top = '0px'
-        newsBtn.style.top = '10px'
+        newsBtn.style.top = '20px'
     }
 }
 
