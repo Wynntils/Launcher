@@ -91,7 +91,8 @@ const DEFAULT_CONFIG = {
         },
         launcher: {
             allowPrerelease: false,
-            dataDirectory: dataPath
+            dataDirectory: dataPath,
+            language: "en_US"
         }
     },
     newsCache: {
@@ -296,6 +297,25 @@ exports.getSelectedServer = function(def = false){
 exports.setSelectedServer = function(serverID){
     config.selectedServer = serverID
 }
+
+/**
+ * Set the launcher language
+ * 
+ * @param {string} language
+ */
+exports.setLauncherLanguage = function(language) {
+    config.settings.launcher.language = language
+}
+
+/**
+ * Get the current selected language from the config
+ * 
+ * @returns {string} The selected language account.
+ */
+exports.getLauncherLanguage = function() {
+    return config.settings.launcher.language
+}
+
 
 /**
  * Get an array of each account currently authenticated by the launcher.

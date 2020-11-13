@@ -39,6 +39,7 @@
     "jquery": "^3.5.1",
     "minecraft-server-status": "^1.0.1",
     "request": "^2.88.2",
+    "select2": "^4.0.13",
     "semver": "^7.3.2",
     "tar-fs": "^2.1.1",
     "three": "^0.122.0",

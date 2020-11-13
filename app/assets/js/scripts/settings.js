@@ -3,11 +3,19 @@ const os     = require('os')
 const semver = require('semver')
 
 const { JavaGuard } = require('./assets/js/assetguard')
-const DropinModUtil  = require('./assets/js/dropinmodutil')
+const DropinModUtil = require('./assets/js/dropinmodutil')
+require('select2')($)
+
+$(document).ready(function () {
+    $(".languageSelect").select2()
+})
+
 
 const settingsState = {
     invalid: new Set()
 }
+
+
 
 function bindSettingsSelect(){
     for(let ele of document.getElementsByClassName('settingsSelectContainer')) {
