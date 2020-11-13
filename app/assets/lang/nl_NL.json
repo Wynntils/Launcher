@@ -1,7 +1,20 @@
 {
-    "name": "Nederland",
+    "name": "Nederlands",
     "html": {
-        "avatarOverlay": "Bewerken"
+        "avatarOverlay": "Bewerken",
+        "landingPlayerLabel": "Spelers",
+        "externalStatus": "EXTERNE STATUSSEN",
+        "newsButtonText": "NIEUWS",
+        "settingsTooltip": "Instellingen",
+        "launch_button": "SPELEN",
+
+        "settingsNavHeaderText": "Instellingen",
+        "wynntilsTabHeader": "Wynntils' Instellingen",
+        "wynntilsTabDesc": "Bekijk of verander uw cape.",
+        "accountTabHeader": "Account Instellingen",
+        "accountTabDesc": "Voeg nieuwe accounts toe of beheer de toegevoegde accounts.",
+        "settingsAddAccountText": "&#43; Voeg account toe",
+        "currentAccounts": "Toegevoegde Accounts"
     },
     "js": {
         "login": {
@@ -51,6 +64,12 @@
                 "validatingMiscIntegrity": "Het valideren van diverse bestandsintegriteit...",
                 "downloadingFiles": "Het downloaden van de bestanden...",
                 "done": "Klaar, geniet van de server!"
+            }
+        },
+        "settings": {
+            "accounts": {
+                "select": "Selecteer Account",
+                "selected": "Geselecteerd Account"
             }
         }
     }

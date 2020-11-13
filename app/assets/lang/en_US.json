@@ -1,7 +1,21 @@
 {
     "name": "English",
     "html": {
-        "avatarOverlay": "Edit"
+        "avatarOverlay": "Edit",
+        "landingPlayerLabel": "Players",
+        "externalStatus": "EXTERNAL STATUSES",
+        "newsButtonText": "NEWS",
+        "settingsTooltip": "Settings",
+        "launch_button": "PLAY",
+
+        "settingsNavHeaderText": "Settings",
+        "wynntilsTabHeader": "Wynntils Settings",
+        "wynntilsTabDesc": "View or change your cape.",
+        "accountTabHeader": "Account Settings",
+        "accountTabDesc": "Add new accounts or manage existing ones.",
+        "settingsAddAccountText": "&#43; Add Account",
+        "currentAccounts": "Current Accounts"
+
     },
     "js": {
         "login": {
@@ -50,7 +64,13 @@
                 "validatingLibraryIntegrity": "Validating library integrity...",
                 "validatingMiscIntegrity": "Validating miscellaneous file integrity...",
                 "downloadingFiles": "Downloading files...",
-                "done": "'Done, Enjoy the server!'"
+                "done": "Done, Enjoy the server!"
+            }
+        },
+         "settings": {
+            "accounts": {
+                "select": "Select Account",
+                "selected": "Selected Account"
             }
         }
     }
