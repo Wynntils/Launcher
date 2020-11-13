@@ -59,6 +59,9 @@ class ProcessBuilder {
             args = args.concat(this.constructModList(modObj.fMods))
         }
 
+        // Tell the game this is the wynntils launcher!
+        args.push("--wynntilsLauncher", "true")
+
         logger.log('Launch Arguments:', args)
 
         const child = child_process.spawn(ConfigManager.getJavaExecutable(), args, {

@@ -4,18 +4,11 @@ const semver = require('semver')
 
 const { JavaGuard } = require('./assets/js/assetguard')
 const DropinModUtil = require('./assets/js/dropinmodutil')
-require('select2')($)
-
-$(document).ready(function () {
-    $(".languageSelect").select2()
-})
 
 
 const settingsState = {
     invalid: new Set()
 }
-
-
 
 function bindSettingsSelect(){
     for(let ele of document.getElementsByClassName('settingsSelectContainer')) {
@@ -899,6 +892,24 @@ function loadSelectedServerOnModsTab(){
         </div>
     `
 }
+$("#settingsLanguageSelected").html(Lang.getSelectedLang());
+// Bind functionality to language switch dropdown
+$('#settingsLanguageOptions div').click(function() {
+    ConfigManager.setLauncherLanguage($(this).data('lang'));
+    ConfigManager.save()
+    $('#loadingContainer').fadeOut(250, () => {
+        document.getElementById('overlayContainer').style.background = 'none'
+        setOverlayContent(
+            'Warning', 'The launcher must reload for the settings to apply.',
+            'Reload'
+        )
+        setOverlayHandler(() => {
+            location.reload()
+        })
+        toggleOverlay(true)
+    })
+})
+
 
 // Bind functionality to the server switch button.
 document.getElementById('settingsSwitchServerButton').addEventListener('click', (e) => {

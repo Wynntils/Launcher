@@ -617,7 +617,6 @@ function drawSkin3D(forced = false) {
 
 exports.showUUID = (uuid) => {
   Athena.getInfo(uuid).then((athenaData) => {
-    console.log(athenaData)
     let cosmetic = athenaData.user.cosmetics
     canvas3d.data('parts', cosmetic.hasEars ? 'ears' : '');
     canvas3d.data('capetype', cosmetic.isElytra ? 'elytra' : 'cape');

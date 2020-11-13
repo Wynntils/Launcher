@@ -137,7 +137,7 @@
                 <div id="settingsShadersContainer">
                     <div class="settingsModsHeader">Shaderpacks</div>
                     <div id="settingsShaderpackDesc">Enable or disable shaders. Please note, shaders will only run smoothly on powerful setups. You may add custom packs here.</div>
-                    <div id="settingsShaderpackWrapper">
+                    <div id="settingsShaderpackWrapper" class='settingsSelectWrapper'>
                         <button id="settingsShaderpackButton"> + </button>
                         <div class="settingsSelectContainer">
                             <div class="settingsSelectSelected" id="settingsShadersSelected">Select Shaderpack</div>
@@ -263,11 +263,16 @@
                     <span class="settingsFieldTitle">Launcher Language.</span>
                     <span class="settingsFieldDesc">Choose the language you want to view the launcher in.</span>    
                 </div>
-                <div class="settingsFieldRight">
-                    <select name="language" class="languageSelect" id="languageSelect">
-                        <option value="en_US">English</option>
-                        <option value="nl_NL">Nederlands</option>
-                    </select>
+                <div class="settingsFieldRight" style="width: 200px;">
+                    <div class="settingsSelectWrapper">
+                    <div class="settingsSelectContainer" style="width:100%">
+                        <div class="settingsSelectSelected" id="settingsLanguageSelected">Language</div>
+                            <div class="settingsSelectOptions" id="settingsLanguageOptions" hidden>
+                                <div data-lang="en_US" selected="">English</div>
+                                <div data-lang="nl_NL" selected="">Nederlands</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="settingsFileSelContainer">

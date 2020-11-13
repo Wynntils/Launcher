@@ -1155,14 +1155,6 @@ input:checked + .toggleSwitchSlider:before {
     transform: translateX(15px);
 }
 
-/* Custom select */
-
-.languageSelect + .select2.select2-container + .select2-selection {
-    background: rgba(255, 255, 255, 0.35);
-    padding: 5px;
-    color: white;
-    border-radius: 5px;
-}
 /* Range Slider styles. */
 .rangeSlider {
     width: 35%;
@@ -1673,7 +1665,7 @@ input:checked + .toggleSwitchSlider:before {
 }
 
 /* Wrapper container. */
-#settingsShaderpackWrapper {
+.settingsSelectWrapper {
     display: flex;
 }
 

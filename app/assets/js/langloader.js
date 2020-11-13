@@ -7,6 +7,10 @@ exports.loadLanguage = function(id){
     lang = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'lang', `${id}.json`))) || {}
 }
 
+exports.getSelectedLang = () => {
+	return lang.name
+}
+
 exports.query = function(id){
     let query = id.split('.')
     let res = lang
